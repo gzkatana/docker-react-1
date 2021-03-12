@@ -1,0 +1,14 @@
+FROM node:alpine
+
+WORKDIR /usr/front
+
+COPY package.json .
+
+RUN npm install 
+
+COPY ./ ./
+
+#RUN npm config set unsafe-perm true
+RUN chmod 777 /usr/front/node_modules
+
+CMD ["npm", "run", "start"]
